@@ -27,7 +27,24 @@ $(document).ready(function() {
     ColorPallet();
     themeOption();
 });
+$window.on("scroll", function(){
+    function isDivVisibleByOffset(divId) {
+    var $div = $('#' + divId);
+    var scrollTop = $(window).scrollTop();
+    var windowHeight = $(window).height();
+    var offsetTop = $div.offset().top;
+    var offsetBottom = offsetTop + $div.outerHeight();
 
+    return (offsetBottom > scrollTop && offsetTop < scrollTop + windowHeight);
+}
+
+// Usage:
+if (isDivVisibleByOffset('about')) {
+    skills();
+} else {
+    console.log('Skill is not visible');
+}
+})
 $window.on("load", function() {
     "use strict";
     $lastWindowWidth = $window.width();
